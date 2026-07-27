@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Resume Parser</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📄 AI Resume Parser</h1>
+
+    <p>Upload your resume and automatically extract information.</p>
+
+    <div class="upload-box">
+
+        <input
+            type="file"
+            id="resume"
+            accept=".pdf"
+            hidden>
+
+        <label for="resume" class="upload-btn">
+            📁 Browse Resume
+        </label>
+
+        <p id="file-name">
+            No file selected
+        </p>
+
+        <button id="upload-btn">
+            Upload Resume
+        </button>
+
+    </div>
+
+    <!-- ===================== -->
+    <!-- Autofill Form -->
+    <!-- ===================== -->
+
+    <div id="result" style=" margin-top:40px;">
+
+        <h2 class="form-title">👤 Candidate Details</h2>
+
+<div class="form-grid">
+
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="name">
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email">
+    </div>
+
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" id="phone">
+    </div>
+
+    <div class="form-group">
+        <label>LinkedIn</label>
+        <input type="text" id="linkedin" placeholder="Optional">
+    </div>
+
+</div>
+
+<div class="form-group">
+
+    <label>Skills</label>
+
+    <textarea
+        id="skills"
+        rows="5"
+        placeholder="skills"></textarea>
+
+</div>
+
+<div class="form-group">
+
+    <label>Education</label>
+
+    <textarea
+        id="education"
+        rows="5"
+        placeholder="Bachelor of Science"></textarea>
+
+</div>
+
+<div class="form-group">
+
+    <label>Experience</label>
+
+    <textarea
+        id="experience"
+        rows="7"
+        placeholder="Experience"></textarea>
+
+</div>
+
+<div class="button-group">
+
+    <button id="submit-btn">
+        💾 Save Candidate
+    </button>
+
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>
