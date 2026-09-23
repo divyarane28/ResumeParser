@@ -120,7 +120,10 @@ Candidate Profile
   ]
 }
 ```
+## LinkedIn
 
+I shared a short demo and details about this project on LinkedIn:
+https://lnkd.in/p/ddce5X9H
 ---
 
 
