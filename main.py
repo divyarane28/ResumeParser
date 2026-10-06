@@ -3,7 +3,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from parser import extract_text_from_pdf
-from llm_service import parse_resume
+from llm_service import parse_resume,parse_job_description
+from matcher import match_resume_with_jd
 print("1 Main Started")
 
 import shutil
@@ -53,7 +54,8 @@ async def upload_resume(file: UploadFile = File(...)):
     return {
         "message": "Resume parsed successfully!",
         "filename": file.filename,
-        "parsed_data": parsed_data
+        "parsed_data": parsed_data,
+        "resume_text": resume_text
     }
 
 @app.post("/submit")
@@ -74,3 +76,53 @@ async def candidate_page(request: Request):
         request=request,
         name="candidate.html"
     )
+
+@app.post("/analyze-jd")
+async def analyze_jd(request: Request):
+
+    print("JD ANALYSIS STARTED")
+
+    data = await request.json()
+
+    jd_text = data.get("job_description", "")
+
+    if not jd_text.strip():
+
+        return {
+            "error": "Job description is empty"
+        }
+
+    print("JD received")
+
+    parsed_jd = parse_job_description(jd_text)
+
+    print("JD analysis completed")
+
+    return {
+        "message": "Job description analyzed successfully!",
+        "parsed_jd": parsed_jd
+    }
+
+@app.post("/match")
+async def match_resume(request: Request):
+
+    print("MATCHING STARTED")
+
+    data = await request.json()
+
+    resume_data = data.get("resume_data", {})
+
+    resume_text = data.get("resume_text", "")
+
+    jd_data = data.get("jd_data", {})
+
+    result = match_resume_with_jd(
+       resume_data,
+       resume_text,
+       jd_data
+    )
+
+    print("MATCHING RESULT:")
+    print(result)
+
+    return result

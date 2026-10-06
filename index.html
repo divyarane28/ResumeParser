@@ -37,9 +37,13 @@
             Upload Resume
         </button>
 
+        <p id="loading-message" style="display:none;">
+         ⏳ Parsing resume... Please wait.
+        </p>
+           
     </div>
 
-    <!-- ===================== -->
+<!-- ===================== -->
     <!-- Autofill Form -->
     <!-- ===================== -->
 
@@ -103,6 +107,77 @@
         placeholder="Experience"></textarea>
 
 </div>
+
+<div class="jd-box">
+
+    <h2>💼 Job Description</h2>
+
+    <textarea
+        id="job-description"
+        rows="10"
+        placeholder="Paste the Job Description here..."
+    ></textarea>
+
+    <button id="match-jd-btn">
+    🔍 Match Resume with JD
+</button>
+
+<p id="jd-loading-message" style="display:none;">
+    ⏳ Analyzing resume and job description...
+</p>
+
+</div>
+
+<div id="match-result" class="match-result" style="display:none;">
+
+    <h2>📊 Resume Match Result</h2>
+
+    <div class="match-score">
+        <span id="match-percentage">0%</span>
+        <p>Resume Match</p>
+    </div>
+
+    <div class="match-row">
+
+        <div class="match-label">
+            ✅ Matching Required Skills
+        </div>
+
+        <div id="matched-skills" class="match-data">
+            No matching required skills
+        </div>
+
+    </div>
+
+
+    <div class="match-row">
+
+        <div class="match-label">
+            ❌ Missing Required Skills
+        </div>
+
+        <div id="missing-skills" class="match-data">
+            No missing required skills
+        </div>
+
+    </div>
+
+
+    <div class="match-row">
+
+        <div class="match-label">
+            ⭐ Matching Preferred Skills
+        </div>
+
+        <div id="matched-preferred-skills" class="match-data">
+            No matching preferred skills
+        </div>
+
+    </div>
+
+</div>
+
+    
 
 <div class="button-group">
 
